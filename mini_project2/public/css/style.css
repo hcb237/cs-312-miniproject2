@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  min-height: 100vh;
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+p {
+  text-align: center;
+  color: #a0a0b0;
+  margin-bottom: 1.5rem;
+}
+
+/* Form */
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  border: 2px solid #2a2a4a;
+  border-radius: 10px;
+  background: #1e1e3a;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-form input:focus {
+  border-color: #4a9eff;
+}
+
+.search-form button {
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: #4a9eff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-form button:hover {
+  background: #3a8eef;
+}
+
+/* Cards */
+.card {
+  background: rgba(30, 30, 58, 0.85);
+  border: 1px solid #2a2a4a;
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #4a9eff;
+}
+
+/* Weather card */
+.weather-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.weather-main img {
+  width: 80px;
+  height: 80px;
+}
+
+.temp {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.desc {
+  text-transform: capitalize;
+  color: #a0a0b0;
+}
+
+/* UV card */
+.uv-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.uv-label {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.uv-label.low { color: #4caf50; }
+.uv-label.moderate { color: #ffc107; }
+.uv-label.high { color: #ff9800; }
+.uv-label.very-high { color: #f44336; }
+.uv-label.extreme { color: #d32f2f; }
+
+/* Details list */
+.details {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.details li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #2a2a4a;
+  color: #a0a0b0;
+}
+
+.details li strong {
+  color: #e0e0e0;
+}
+
+/* Error */
+.error {
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid #f44336;
+  border-radius: 10px;
+  padding: 1rem;
+  color: #ff8a80;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  color: #4a9eff;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  h1 { font-size: 1.4rem; }
+  .temp { font-size: 2rem; }
+  .uv-value { font-size: 2.5rem; }
+  .search-form { flex-direction: column; }
+}

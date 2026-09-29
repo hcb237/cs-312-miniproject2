@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= city %> — Weather & UV</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <!-- back to home for new search-->
+    <a href="/" class="back-link">← New search</a>
+    <h1><%= city %></h1>
+
+    <!-- Weather section -->
+    <section class="card weather-card">
+      <h2>Weather</h2>
+      <div class="weather-main">
+        <img
+          src="https://openweathermap.org/img/wn/<%= weather.weather[0].icon %>@2x.png"
+          alt="<%= weather.weather[0].description %>"
+        />
+        <div>
+          <p class="temp"><%= Math.round(weather.main.temp) %>*F</p>
+          <p class="desc"><%= weather.weather[0].description %></p>
+        </div>
+      </div>
+      <ul class="details">
+        <li>Feels like: <strong><%= Math.round(weather.main.feels_like) %>*F</strong></li>
+        <li>Humidity: <strong><%= weather.main.humidity %>%</strong></li>
+        <li>Wind: <strong><%= weather.wind.speed %> m/s</strong></li>
+      </ul>
+    </section>
+
+    <!-- UV section -->
+    <section class="card uv-card">
+      <h2>UV Index</h2>
+      <!-- render details if call succes-->
+      <% if (uv) { %>
+        <!-- name choosen at run to color code-->
+        <p class="uv-value"><%= uv.uv %></p>
+        <p class="uv-label <%= 
+          uv.uv >= 11 ? 'extreme' :
+          uv.uv >= 8  ? 'very-high' :
+          uv.uv >= 6  ? 'high' :
+          uv.uv >= 3  ? 'moderate' : 'low'
+        %>">
+          <%= 
+            uv.uv >= 11 ? 'Extreme — avoid sun exposure' :
+            uv.uv >= 8  ? 'Very High — use SPF 50+' :
+            uv.uv >= 6  ? 'High — apply sunscreen' :
+            uv.uv >= 3  ? 'Moderate — consider sunscreen' :
+                          'Low — safe for most people'
+          %>
+        </p>
+        <ul class="details">
+          <li>Daily max UV: <strong><%= uv.uv_max %></strong></li>
+          <li>Ozone: <strong><%= uv.ozone %> DU</strong></li>
+          <% if (uv.sun_info && uv.sun_info.sun_position) { %>
+            <li>Sun altitude: <strong><%= uv.sun_info.sun_position.altitude.toFixed(1) %>°</strong></li>
+          <% } %>
+        </ul>
+      <% } else { %>
+        <!-- error incase unavalible-->
+        <p class="error">UV data unavailable right now.</p>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>
